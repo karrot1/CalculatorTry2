@@ -56,15 +56,31 @@ public class MainActivity extends AppCompatActivity {
         Button expbutton = findViewById(R.id.exponent);
         Button decimalbutton = findViewById(R.id.decimal);
         Button solvebutton = findViewById(R.id.solve);
+        Button clearbutton = findViewById(R.id.clear);
+        Button zerobutton = findViewById(R.id.zero);
 
         //onclick listeners for the numbers and the decimal point
+        zerobutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (op == NONE && number1.equals("")== false) {
+                    number1 = number1 + "0";
+                    display.setText(number1);
+                } else if(op != NONE && number2.equals("")==false) {
+                    number2 = number2 + "0";
+                    display.setText(number2);
+                }
+            }
+        });
         onebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "1";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "1";
+                    number2 = number2 + "1";
+                    display.setText(number2);
                 }
             }
         });
@@ -73,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "2";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "2";
+                    number2 = number2 + "2";
+                    display.setText(number2);
                 }
             }
         });
@@ -83,8 +101,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "3";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "3";
+                    number2 = number2 + "3";
+                    display.setText(number2);
                 }
             }
         });
@@ -93,8 +113,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "4";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "4";
+                    number2 = number2 + "4";
+                    display.setText(number2);
                 }
             }
         });
@@ -103,8 +125,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "5";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "5";
+                    number2 = number2 + "5";
+                    display.setText(number2);
                 }
             }
         });
@@ -113,8 +137,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "6";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "6";
+                    number2 = number2 + "6";
+                    display.setText(number2);
                 }
             }
         });
@@ -123,8 +149,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "7";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "7";
+                    number2 = number2 + "7";
+                    display.setText(number2);
                 }
             }
         });
@@ -133,8 +161,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "8";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "8";
+                    number2 = number2 + "8";
+                    display.setText(number2);
                 }
             }
         });
@@ -143,8 +173,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     number1 = number1 + "9";
+                    display.setText(number1);
                 } else {
-                    number1 = number2 + "9";
+                    number2 = number2 + "9";
+                    display.setText(number2);
                 }
             }
         });
@@ -154,9 +186,11 @@ public class MainActivity extends AppCompatActivity {
                 if (isdecimal == false){
                     if (op == NONE) {
                         number1 = number1 + ".";
+                        display.setText(number1);
                         isdecimal = true;
                     } else {
-                        number1 = number2 + ".";
+                        number2 = number2 + ".";
+                        display.setText(number2);
                         isdecimal = true;
                     }
                 }
@@ -171,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                     Double result = Math.sqrt(Double.parseDouble(number1));
                     number1 = "";
                     number2 = "";
+                    isdecimal = false;
                     display.setText(String.valueOf(result));
                 }
             }
@@ -180,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     op = ADD;
+                    isdecimal = false;
                 }
             }
         });
@@ -188,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     op = SUBTRACT;
+                    isdecimal = false;
                 }
             }
         });
@@ -196,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     op = MULTIPLY;
+                    isdecimal = false;
                 }
             }
         });
@@ -204,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     op = DIVIDE;
+                    isdecimal = false;
                 }
             }
         });
@@ -212,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (op == NONE) {
                     op = EXPONENT;
+                    isdecimal = false;
                 }
             }
         });
@@ -227,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
                         number2 = "";
                         display.setText(String.valueOf(result));
                         op = NONE;
+                        isdecimal = false;
                     }
                     else if(op == SUBTRACT){
                         Double result = Double.parseDouble(number1) - Double.parseDouble(number2);
@@ -234,22 +275,43 @@ public class MainActivity extends AppCompatActivity {
                         number2 = "";
                         display.setText(String.valueOf(result));
                         op = NONE;
+                        isdecimal = false;
                     }
                     else if(op == MULTIPLY){
-                        Double result = Double.parseDouble(number1) - Double.parseDouble(number2);
+                        Double result = Double.parseDouble(number1) * Double.parseDouble(number2);
                         number1 = "";
                         number2 = "";
                         display.setText(String.valueOf(result));
                         op = NONE;
+                        isdecimal = false;
                     }
                     else if(op == DIVIDE){
-                        Double result = Double.parseDouble(number1) - Double.parseDouble(number2);
+                        Double result = Double.parseDouble(number1) / Double.parseDouble(number2);
                         number1 = "";
                         number2 = "";
                         display.setText(String.valueOf(result));
                         op = NONE;
+                        isdecimal = false;
+                    }
+                    else if(op == EXPONENT){
+                        Double result = Math.pow(Double.parseDouble(number1), Double.parseDouble(number2));
+                        number1 = "";
+                        number2 = "";
+                        display.setText(String.valueOf(result));
+                        op = NONE;
+                        isdecimal = false;
                     }
                 }
+            }
+        });
+        clearbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number1 = "";
+                number2 = "";
+                display.setText("000");
+                op = NONE;
+                isdecimal = false;
             }
         });
     }
